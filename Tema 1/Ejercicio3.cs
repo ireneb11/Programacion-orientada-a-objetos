@@ -1,6 +1,5 @@
 using System;
-
-/* EJERCICIO 3
+/*
  
  Construir una clase llamada Luz que simule un semáforo. El atributo color de la 
 clase debe cambiar de Verde a Amarillo y a Rojo y de nuevo regresar a Verde 
@@ -11,53 +10,42 @@ Rojo
 
 public class Luz
 {
-    //atributo color
-    private string color { get; set; }
-
-    //Constructor
+    public string Color { get; private set; }  // la ponemos publica para ya definir el metodo get, que tienen que ser publicas para verlos desde program
+                                               // el set lo ponemos private para que solo se pueda cambiar desde la clase Luz  con el metodo Cambio           
     public Luz()
     {
-        color = "Rojo";
+        Color = "Rojo"; // Color inicial
     }
-
-    // metodo cambio
-    public void cambio()
+    public void Cambio()
     {
-        switch (color)
+        switch (Color)
         {
             case "Rojo":
-                color = "Verde";
+                Color = "Verde";
                 break;
             case "Verde":
-                color = "Amarillo";
+                Color = "Amarillo";
                 break;
             case "Amarillo":
-                color = "Rojo";
+                Color = "Rojo";
                 break;
+            default:
+                throw new InvalidOperationException("Color inválido");
         }
-
-
-    }
-    //metodo get
-    public string getColor() {
-         return color; 
     }
 }
 
+
 public class Program
 {
-    static void Main(string[] arg)
+    public static void Main(string[] args)
     {
         Luz semaforo = new Luz();
-        
-        for (int i = 1; i < 10; i++)
+        for (int i = 0; i < 10; i++)
         {
-            Console.WriteLine(semaforo.getColor());
-          semaforo.cambio();
-    
-            //pausa de 1 segundo
-            System.Threading.Thread.Sleep(1000);
-
+            Console.WriteLine($"El color actual del semáforo es: {semaforo.Color}");  // Muestra el color actual usandoo el get
+            semaforo.Cambio();
         }
+        
     }
 }
