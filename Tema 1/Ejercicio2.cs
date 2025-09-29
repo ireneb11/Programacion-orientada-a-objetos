@@ -13,11 +13,11 @@ public class Ascensor
     private float pesoMaximo;
 
     // Constructor
-    public Ascensor(int pisoActual, int pisoMaximo, int pisoMinimo, float pesoMaximo)
+    public Ascensor(int pisoActual, float pesoMaximo)
     {
         this.pisoActual = pisoActual;
-        this.pisoMaximo = pisoMaximo;
-        this.pisoMinimo = pisoMinimo;
+        pisoMaximo = 6;  // ya se definen estas variables porque no van a cambiar
+        pisoMinimo = 1;
         this.pesoMaximo = pesoMaximo;
     }
 
@@ -74,7 +74,7 @@ public class Program
 {
     static void Main(string[] args)
     {
-        Ascensor A1 = new Ascensor(1,6, 1, 750f);
+        Ascensor A1 = new Ascensor(1, 750f);
         A1.setPiso(3,300f);
         Console.WriteLine();
         A1.setPiso(5, 800f);
