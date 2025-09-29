@@ -1,5 +1,4 @@
-using System;
-/*
+/* EJERCICIO 3
  
  Construir una clase llamada Luz que simule un semáforo. El atributo color de la 
 clase debe cambiar de Verde a Amarillo y a Rojo y de nuevo regresar a Verde 
@@ -10,42 +9,51 @@ Rojo
 
 public class Luz
 {
-    public string Color { get; private set; }  // la ponemos publica para ya definir el metodo get, que tienen que ser publicas para verlos desde program
-                                               // el set lo ponemos private para que solo se pueda cambiar desde la clase Luz  con el metodo Cambio           
+    //atributo color
+    public string color { get; private set; } // la ponemos publica para ya definir el metodo get, que tienen que ser publicas para verlos desde program
+                                              // el set lo ponemos private para que solo se pueda cambiar desde la clase Luz  con el metodo Cambio        
+
+    //Constructor
     public Luz()
     {
-        Color = "Rojo"; // Color inicial
+        color = "Rojo";
     }
-    public void Cambio()
+
+    // metodo cambio
+    public void cambio()
     {
-        switch (Color)
+        switch (color)
         {
             case "Rojo":
-                Color = "Verde";
+                color = "Verde";
                 break;
             case "Verde":
-                Color = "Amarillo";
+                color = "Amarillo";
                 break;
             case "Amarillo":
-                Color = "Rojo";
+                color = "Rojo";
                 break;
-            default:
-                throw new InvalidOperationException("Color inválido");
         }
-    }
-}
 
+
+    }
+    
+}
 
 public class Program
 {
-    public static void Main(string[] args)
+    static void Main(string[] arg)
     {
         Luz semaforo = new Luz();
-        for (int i = 0; i < 10; i++)
-        {
-            Console.WriteLine($"El color actual del semáforo es: {semaforo.Color}");  // Muestra el color actual usandoo el get
-            semaforo.Cambio();
-        }
         
+        for (int i = 1; i < 10; i++)
+        {
+            Console.WriteLine(semaforo.color);  // Muestra el color actual usandoo el get
+            semaforo.cambio();
+    
+            //pausa de 1 segundo
+            System.Threading.Thread.Sleep(1000);
+
+        }
     }
 }
