@@ -2,7 +2,7 @@ using System;
 
 class Empleado{
   // atributos
-  private int ID;
+  public int ID {get; private set};
   private float salario;
   private int numeroHorasMax;
 
@@ -22,6 +22,9 @@ class Empleado{
 
 public class Program{
   static void Main(string[]arg){
+    
+    Empleado.E1= new Empleado(45, 356.7f,30);
+    Console.WriteLine (P1.ID);
     
   }
 }
