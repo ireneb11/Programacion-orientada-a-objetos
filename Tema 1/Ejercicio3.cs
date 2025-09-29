@@ -1,3 +1,5 @@
+using System;
+
 /* EJERCICIO 3
  
  Construir una clase llamada Luz que simule un semáforo. El atributo color de la 
