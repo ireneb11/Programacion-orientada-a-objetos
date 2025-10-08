@@ -26,12 +26,12 @@ namespace Ejercicio1
             } 
 
           // Calculamos la edad actual usando el metodo
-          int edadActual = CalcularEdad  (anioActual, anioNacimiento)
+          int edadActual = CalcularEdad  (anioActual, anioNacimiento);
 
             //Calculamos la edad que tendrá en el año 2030
-            int edadEn2030 = CalcularEdad(2030, anioNacimiento )
+            int edadEn2030 = CalcularEdad(2030, anioNacimiento );
 
-          Console.WriteLine("Hola " + nombre);
+          Console.WriteLine($"Hola {nombre}, en el año 2030 cumplirás {edadEn2030}");
 
 
 
