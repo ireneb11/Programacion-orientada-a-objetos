@@ -13,54 +13,60 @@ habido un error, y 1 si se ha creado correctamente y se han guardado los datos.
 
 
 using System;
-using
+using System.IO;
+using System.Text;
 
-class Program{
-  static void Main(string[]arg){
+class Program
+{
+    static void Main(string[] arg)
+    {
+        // guardamos los nombres en un array
+        string[] nombres = { "María José", "Ana", "Luis", "Carlos" };
 
-    // guardamos los nombres en un array
-    string[] nombres = { "María José", "Ana", "Luis", "Carlos" };
+        string filePath = "nombres.txt";
 
-    string filePath = "nombres.txt";
+        int resultado = GuardarArray(nombres, filePath);
 
-    int resultado = guardarListado(nombres, filePath);
+        // explica si se ha podido escribir en el archivo o no.
+        if (resultado == 1) {
+            Console.WriteLine("Listado guardado correctamente.");
+        }
+        else {
+            Console.WriteLine("Error al guardar el listado.");
+        }
 
-  // explica si se ha podido escribir en el archivo o no.
-  if (resultado == 1)
-      Console.WriteLine("Listado guardado correctamente.");
-  else
-      Console.WriteLine("Error al guardar el listado.");
 
 
-    
-
- 
-
-    public static int GuardarArray(string [] lista, string rutaDelArchivo){
-      // verifica si el archivo existe y si es asi lo elimina
-      if (File.Exists(filePath)){
-        File.Delete(filePath)
-      }
-      // crea el archivo
-      using FileStream fs = File.Create(filePath){
-  
-        try{
-          using (StramWriter writer = new StreamWriter(filePath)){  // escribe en el archivo abriendo un straem y el using se encarga de cerrarlo
-            foreach (string nombre in nombres)
+        public static int GuardarArray(string[] lista, string rutaDelArchivo)
+        {
+            // verifica si el archivo existe y si es asi lo elimina
+            if (File.Exists(rutaDelArchivo))
             {
-                writer.WriteLine(nombre);
+                File.Delete(rutaDelArchivo);
             }
-          }
-          return 1;
-        }
-        catch (Exception ex){
-            // Si hay un error, mostramos un mensaje y devolvemos 0
-            Console.WriteLine("Error al guardar el listado: " + ex.Message);
-            return 0;
-        }
-      }
-    }
-    
-}
+            // crea el archivo
+            using FileStream fs = File.Create(rutaDelArchivo){
 
+                try
+                {
+                    using (StreamWriter writer = new StreamWriter(rutaDelArchivo))
+                    {  // escribe en el archivo abriendo un straem y el using se encarga de cerrarlo
+                        foreach (string elemento in lista)
+                        {
+                            writer.WriteLine(elemento);
+                        }
+                    }
+                    return 1;
+                }
+                catch (Exception ex)
+                {
+                    // Si hay un error, mostramos un mensaje y devolvemos 0
+                    Console.WriteLine("Error al guardar el listado: " + ex.Message);
+                    return 0;
+                }
+            }
+        }
+    }
+ 
+}
 
