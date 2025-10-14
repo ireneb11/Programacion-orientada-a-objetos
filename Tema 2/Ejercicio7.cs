@@ -34,39 +34,39 @@ class Program
         else {
             Console.WriteLine("Error al guardar el listado.");
         }
+    }
 
 
-
-        public static int GuardarArray(string[] lista, string rutaDelArchivo)
+    public static int GuardarArray(string[] lista, string rutaDelArchivo)
+    {
+        // verifica si el archivo existe y si es asi lo elimina
+        if (File.Exists(rutaDelArchivo))
         {
-            // verifica si el archivo existe y si es asi lo elimina
-            if (File.Exists(rutaDelArchivo))
-            {
-                File.Delete(rutaDelArchivo);
-            }
-            // crea el archivo
-            using FileStream fs = File.Create(rutaDelArchivo){
+            File.Delete(rutaDelArchivo);
+        }
+        // crea el archivo
+        using (FileStream fs = File.Create(rutaDelArchivo))
+        {
 
-                try
-                {
-                    using (StreamWriter writer = new StreamWriter(rutaDelArchivo))
-                    {  // escribe en el archivo abriendo un straem y el using se encarga de cerrarlo
-                        foreach (string elemento in lista)
-                        {
-                            writer.WriteLine(elemento);
-                        }
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(rutaDelArchivo)) 
+                {  // escribe en el archivo abriendo un straem y el using se encarga de cerrarlo
+                    foreach (string elemento in lista)
+                    {
+                        writer.WriteLine(elemento);
                     }
-                    return 1;
                 }
-                catch (Exception ex)
-                {
-                    // Si hay un error, mostramos un mensaje y devolvemos 0
-                    Console.WriteLine("Error al guardar el listado: " + ex.Message);
-                    return 0;
-                }
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                // Si hay un error y no se puede escribir en el archivo, devolvemos 0 y mostramos un mensaje
+                Console.WriteLine("Error al guardar el listado: " + ex.Message);
+                return 0;
             }
         }
     }
+    
  
 }
-
