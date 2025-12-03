@@ -110,7 +110,13 @@ public class Organizador{
     
 
   
-    
+    public static ResultadoOrg resultadoOrg(){
+      ResultadoOrg result = new ResultadoOrg();
+      result.pilaValiosos= ObjeterValiosos(colaInicial,  umbral);
+      resul.colaComunes = ObjeterComunes ( colaInicial,  umbral)
+
+        return result;
+    }
     
     
   }
