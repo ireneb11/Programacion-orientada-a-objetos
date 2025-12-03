@@ -4,6 +4,7 @@ public class Principal{
       inventario.Add("Espada Maestra", "Armas",100);
       inventario.Add( "Escudo Hyliano", "Defensas", 50);
 
+    
       Console.WriteLine("Inventario original:");
   
   
