@@ -77,7 +77,7 @@ public class InputHangler : MonoBehaviour
       A → (-1,0)
       */
         CharacterController.Move(movementVector);  // Le dice al otro script: 👉 “Toma este vector y muévete.”
-        Vector2 lookVector = _lookAction.ReadValue<Vector2>();   
+        Vector2 lookVector = _lookAction.ReadValue<Vector2>();   // lee el raton o joystick
         CharacterController.Rotate(movementVector);    
     }
 }
